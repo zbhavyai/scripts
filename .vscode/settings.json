@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 3 },
+  "[shellscript]": { "editor.defaultFormatter": "mkhl.shfmt" },
+  "prettier.requireConfig": false,
+  "prettier.useEditorConfig": true,
+  "prettier.embeddedLanguageFormatting": "auto",
+  "prettier.bracketSameLine": false,
+  "prettier.endOfLine": "lf",
+  "prettier.jsxSingleQuote": false,
+  "prettier.printWidth": 200,
+  "prettier.semi": true,
+  "prettier.singleQuote": false,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "all",
+  "prettier.useTabs": false,
+  "python.defaultInterpreterPath": "./.venv/PY-VENV/bin/python",
+  "python.terminal.activateEnvironment": true
+}
