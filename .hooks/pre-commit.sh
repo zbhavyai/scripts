@@ -25,7 +25,7 @@ function shell_lint() {
         fi
 
         if ! shellcheck -e SC2034 -- "$f"; then
-            block "[ERROR] ShellCheck failed for $f"
+            block "[ERROR] shellcheck failed for $f"
         fi
     done
 }
