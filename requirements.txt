@@ -1,1 +1,2 @@
 shellcheck_py==0.11.0.1
+shfmt_py==3.12.0.2
