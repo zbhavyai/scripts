@@ -1,0 +1,46 @@
+---
+name: Py Lint
+
+on:
+  push:
+    paths:
+      - "**.py"
+      - "pyproject.toml"
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  py-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install --requirement requirements.txt
+
+      - name: Run ruff format
+        run: |
+          ruff format --check --force-exclude -- src
+
+      - name: Run ruff lint
+        run: |
+          ruff check --force-exclude -- src
+
+      - name: Run mypy typecheck
+        run: |
+          mypy --pretty -- src

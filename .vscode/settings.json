@@ -6,6 +6,7 @@
   "files.trimTrailingWhitespace": true,
   "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode", "editor.tabSize": 3 },
   "[shellscript]": { "editor.defaultFormatter": "mkhl.shfmt" },
+  "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" },
   "prettier.requireConfig": false,
   "prettier.useEditorConfig": true,
   "prettier.embeddedLanguageFormatting": "auto",
