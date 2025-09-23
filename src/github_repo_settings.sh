@@ -20,7 +20,7 @@ function settings_general_pull_requests() {
         --field allow_merge_commit=false \
         --field allow_squash_merge=true \
         --field squash_merge_commit_title=PR_TITLE \
-        --field squash_merge_commit_message=PR_BODY \
+        --field squash_merge_commit_message=COMMIT_MESSAGES \
         --field allow_rebase_merge=false \
         --field allow_update_branch=true \
         --field allow_auto_merge=false \
