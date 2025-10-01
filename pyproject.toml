@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Useful little cmd line scripts."
 readme = "README.md"
 requires-python = ">=3.13"
-license = { file = "LICENSE" }
+license = "BSD 3-Clause"
+license-files = ["LICENSE"]
+dependencies = []
 
 [tool.ruff]
 line-length = 100
