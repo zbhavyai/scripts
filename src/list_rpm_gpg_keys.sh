@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+function erase_help() {
+    echo -e "\n"
+    printSeparator
+    printSeparator
+    echo "To erase any key from the RPM database, do"
+    echo "  sudo rpm --erase <keyname>-<keyversion>-<keyrelease>"
+    echo
+    echo "Example"
+    echo "  sudo rpm --erase gpg-pubkey-9fd62a3f-66f9f05a"
+    printSeparator
+    printSeparator
+}
+
 function print_separator() {
     terminal_width=$(tput cols)
     printf "%.0s-" $(seq 1 "${terminal_width}")
@@ -32,6 +45,7 @@ Packager     : %{packager}\n"
 
 function main() {
     list_rpm_gpg_keys
+    erase_help
 }
 
 main
