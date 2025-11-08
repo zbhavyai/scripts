@@ -111,18 +111,18 @@ JSON
 }
 
 function main() {
-    local owner="$1"
-    local repo="$2"
+    local owner="${1}"
+    local repo="${2}"
 
-    if [[ -z "$owner" || -z "$repo" ]]; then
+    if [[ -z "${owner}" || -z "${repo}" ]]; then
         echo "Invalid repository format. Use 'owner' 'repo'." >&2
         exit 1
     fi
 
-    settings_general_features "$owner" "$repo"
-    settings_general_pull_requests "$owner" "$repo"
-    settings_rules_rulesets_branch "$owner" "$repo"
-    settings_rules_rulesets_tag "$owner" "$repo"
+    settings_general_features "${owner}" "${repo}"
+    settings_general_pull_requests "${owner}" "${repo}"
+    settings_rules_rulesets_branch "${owner}" "${repo}"
+    settings_rules_rulesets_tag "${owner}" "${repo}"
 }
 
 main "$@"

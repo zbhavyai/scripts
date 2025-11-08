@@ -36,7 +36,7 @@ Install date : %{installtime:date}\n\
 Packager     : %{packager}\n"
     done
 
-    if [ $atleastOneKey -eq 0 ]; then
+    if [ "${atleastOneKey}" -eq 0 ]; then
         :
     else
         print_separator "-"
