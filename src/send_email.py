@@ -25,8 +25,19 @@ def test_email_content() -> str:
     return """
     <html>
       <body>
-        <h1 style="color:blue;">Test Email</h1>
-        <p>This is a test email sent from the send_email.py script.</p>
+        <h1 style="color: blue">Test Email</h1>
+        <p>
+          This is a test email sent from the
+          <kbd>
+            <a
+              href="https://github.com/zbhavyai/scripts/blob/main/src/send_email.py"
+              rel="noopener noreferrer"
+              target="_blank"
+              >send_email.py</a
+            >
+          </kbd>
+          script.
+        </p>
       </body>
     </html>
     """
