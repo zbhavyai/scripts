@@ -2,7 +2,7 @@
 set -euo pipefail
 
 function settings_general_features() {
-    gh api "repos/${1}/${2}" \
+    gh api "repos/${1}" \
         --method PATCH \
         --silent \
         --field has_wiki=false \
@@ -14,7 +14,7 @@ function settings_general_features() {
 }
 
 function settings_general_pull_requests() {
-    gh api "repos/${1}/${2}" \
+    gh api "repos/${1}" \
         --method PATCH \
         --silent \
         --field allow_merge_commit=false \
@@ -64,7 +64,7 @@ function settings_rules_rulesets_branch() {
 }
 JSON
 
-    gh api "repos/${1}/${2}/rulesets" \
+    gh api "repos/${1}/rulesets" \
         --method POST \
         --silent \
         --input "${tmp_file}"
@@ -102,7 +102,7 @@ function settings_rules_rulesets_tag() {
 }
 JSON
 
-    gh api "repos/${1}/${2}/rulesets" \
+    gh api "repos/${1}/rulesets" \
         --method POST \
         --silent \
         --input "${tmp_file}"
@@ -111,18 +111,17 @@ JSON
 }
 
 function main() {
-    local owner="${1}"
-    local repo="${2}"
+    local repo="${1}"
 
-    if [[ -z "${owner}" || -z "${repo}" ]]; then
+    if [[ -z "${repo}" ]]; then
         echo "Invalid repository format. Use 'owner' 'repo'." >&2
         exit 1
     fi
 
-    settings_general_features "${owner}" "${repo}"
-    settings_general_pull_requests "${owner}" "${repo}"
-    settings_rules_rulesets_branch "${owner}" "${repo}"
-    settings_rules_rulesets_tag "${owner}" "${repo}"
+    settings_general_features "${repo}"
+    settings_general_pull_requests "${repo}"
+    settings_rules_rulesets_branch "${repo}"
+    settings_rules_rulesets_tag "${repo}"
 }
 
 main "$@"
