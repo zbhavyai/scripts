@@ -2,6 +2,8 @@
 set -euo pipefail
 
 function settings_general_features() {
+    printf "%-16s: " "General Features"
+
     gh api "repos/${1}" \
         --method PATCH \
         --silent \
@@ -10,10 +12,12 @@ function settings_general_features() {
         --field has_discussions=true \
         --field has_projects=false
 
-    echo "settings_general_features: $?"
+    printf "%s\n" "$?"
 }
 
 function settings_general_pull_requests() {
+    printf "%-16s: " "Pull Requests"
+
     gh api "repos/${1}" \
         --method PATCH \
         --silent \
@@ -26,10 +30,12 @@ function settings_general_pull_requests() {
         --field allow_auto_merge=false \
         --field delete_branch_on_merge=true
 
-    echo "settings_general_pull_requests: $?"
+    printf "%s\n" "$?"
 }
 
 function settings_rules_rulesets_branch() {
+    printf "%-16s: " "Branch Rulesets"
+
     tmp_file=$(mktemp)
     cat >"${tmp_file}" <<'JSON'
 {
@@ -69,10 +75,12 @@ JSON
         --silent \
         --input "${tmp_file}"
 
-    echo "settings_rules_rulesets_branch: $?"
+    printf "%s\n" "$?"
 }
 
 function settings_rules_rulesets_tag() {
+    printf "%-16s: " "Tag Rulesets"
+
     tmp_file=$(mktemp)
     cat >"${tmp_file}" <<'JSON'
 {
@@ -107,7 +115,7 @@ JSON
         --silent \
         --input "${tmp_file}"
 
-    echo "settings_rules_rulesets_tag: $?"
+    printf "%s\n" "$?"
 }
 
 function main() {
