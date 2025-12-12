@@ -185,7 +185,6 @@ function main() {
 
     echo "[ INFO] Download complete!"
     echo "[ INFO] Model '${name}:${tag}' installed successfully."
-    echo "[ INFO] Restart your Ollama container if necessary."
 }
 
 main "$@"
