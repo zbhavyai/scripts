@@ -9,7 +9,7 @@ license-files = ["LICENSE"]
 dependencies = []
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 target-version = "py313"
 extend-exclude = ["build", "dist", ".venv", "venv", ".mypy_cache"]
 
@@ -38,7 +38,7 @@ indent-style = "space"
 
 [tool.mypy]
 python_version = "3.13"
-no_error_summary = true
+error_summary = false
 warn_unused_ignores = true
 warn_redundant_casts = true
 strict_optional = true

@@ -1,3 +1,10 @@
 {
-  "recommendations": ["charliermarsh.ruff", "esbenp.prettier-vscode", "editorconfig.editorconfig", "mkhl.shfmt", "ms-python.python", "ms-python.vscode-pylance"]
+  "recommendations": [
+    "charliermarsh.ruff",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "mkhl.shfmt",
+    "ms-python.python",
+    "ms-python.vscode-pylance"
+  ]
 }

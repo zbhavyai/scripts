@@ -9,14 +9,14 @@ trim_trailing_whitespace = true
 
 [*.py]
 indent_size = 4
-max_line_length = 200
+max_line_length = 120
 
 [*.{js,jsx,ts,tsx}]
 indent_size = 2
-max_line_length = 200
+max_line_length = 120
 
 [*.{json,jsonc}]
-max_line_length = off
+max_line_length = 120
 
 [*.md]
 indent_size = 3

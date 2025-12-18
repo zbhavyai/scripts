@@ -90,9 +90,7 @@ def send_email(smtp_cfg: dict[str, str], to_list: list[str], subject: str, body:
                     if mode == "starttls_required":
                         logging.error("STARTTLS required on 587 but failed: %s", e)
                         return
-                    logging.warning(
-                        "STARTTLS optional failed on port %s; continuing unencrypted: %s", port, e
-                    )
+                    logging.warning("STARTTLS optional failed on port %s; continuing unencrypted: %s", port, e)
             elif mode == "starttls_required":
                 logging.error("Port 587 but server does not advertise STARTTLS; aborting send.")
                 return
