@@ -8,9 +8,7 @@ function block() {
     exit 1
 }
 
-CHECKS="shell_lint py_lint"
-
-function shell_lint() {
+function sh_lint() {
     mapfile -d '' -t staged_sh < <(git diff --cached --name-only -z --diff-filter=ACMR -- '*.sh' || true)
 
     if ((${#staged_sh[@]} == 0)); then
@@ -51,6 +49,8 @@ function py_lint() {
         block "[ERROR] mypy failed"
     fi
 }
+
+CHECKS="sh_lint py_lint"
 
 for CHECK in $CHECKS; do
     ($CHECK) || exit $?
