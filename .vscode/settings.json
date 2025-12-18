@@ -19,6 +19,6 @@
   "prettier.tabWidth": 2,
   "prettier.trailingComma": "all",
   "prettier.useTabs": false,
-  "python.defaultInterpreterPath": "./.venv/PY-VENV/bin/python",
+  "python.defaultInterpreterPath": "./.venv/bin/python",
   "python.terminal.activateEnvironment": true
 }
