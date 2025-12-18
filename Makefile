@@ -1,30 +1,26 @@
-VENV_DIR := .venv/PY-VENV
-REQUIREMENTS_FILE := requirements.txt
+.PHONY: clean init format lint help
 
-.PHONY: init format lint help
+clean:
+	@rm -rf .venv .mypy_cache .ruff_cache
 
-init: $(REQUIREMENTS_FILE)
+init:
 	@ln -sf $(CURDIR)/.hooks/pre-commit.sh .git/hooks/pre-commit
-	@if [ ! -d "$(VENV_DIR)" ]; then \
-		python3 -m venv $(VENV_DIR); \
-	fi
-	@. $(VENV_DIR)/bin/activate && pip install --upgrade pip && pip install -r $(REQUIREMENTS_FILE)
+	@uv sync --dev
 
 format:
-	@. $(VENV_DIR)/bin/activate && \
-	find src -type f -name '*.sh' -print0 | xargs -0 -r shfmt -w -i 4 && \
-	ruff format --force-exclude -- src
+	@find src -type f -name '*.sh' -print0 | xargs -0 -r uv run shfmt -w -i 4
+	@uv run ruff format --force-exclude -- src
 
 lint:
-	@. $(VENV_DIR)/bin/activate && \
-	find src -type f -name '*.sh' -print0 | xargs -0 -r shellcheck -e SC2034 && \
-	ruff check --force-exclude -- src && \
-	mypy --pretty -- src
+	@find src -type f -name '*.sh' -print0 | xargs -0 -r uv run shellcheck -e SC2034
+	@uv run ruff check --force-exclude -- src
+	@uv run mypy --pretty -- src
 
 help:
 	@echo "Available targets:"
-	@echo "  init          - Set up py venv and install requirements"
-	@echo "  lint          - Run lint on all bash and python scripts"
-	@echo "  format        - Run format on all bash and python scripts"
-	@echo "  help          - Show this help message"
+	@echo "  clean		- Remove cache and virtual environment"
+	@echo "  init       - Set up py venv and install requirements"
+	@echo "  lint       - Run lint on all bash and python scripts"
+	@echo "  format     - Run format on all bash and python scripts"
+	@echo "  help       - Show this help message"
 

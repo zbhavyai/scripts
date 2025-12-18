@@ -20,11 +20,11 @@ function sh_lint() {
             continue
         fi
 
-        if ! shfmt -d -i 4 -- "$f"; then
+        if ! uv run shfmt -d -i 4 -- "$f"; then
             block "[ERROR] shfmt failed for $f"
         fi
 
-        if ! shellcheck -e SC2034 -- "$f"; then
+        if ! uv run shellcheck -e SC2034 -- "$f"; then
             block "[ERROR] shellcheck failed for $f"
         fi
     done
@@ -37,15 +37,15 @@ function py_lint() {
         return 0
     fi
 
-    if ! ruff format --check --quiet --force-exclude -- "${staged_py[@]}"; then
+    if ! uv run ruff format --check --quiet --force-exclude -- "${staged_py[@]}"; then
         block "[ERROR] ruff format failed"
     fi
 
-    if ! ruff check --quiet --force-exclude -- "${staged_py[@]}"; then
+    if ! uv run ruff check --quiet --force-exclude -- "${staged_py[@]}"; then
         block "[ERROR] ruff check failed"
     fi
 
-    if ! mypy --pretty -- "${staged_py[@]}"; then
+    if ! uv run mypy --pretty -- "${staged_py[@]}"; then
         block "[ERROR] mypy failed"
     fi
 }

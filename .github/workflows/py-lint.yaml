@@ -26,21 +26,21 @@ jobs:
       - name: Set up python
         uses: actions/setup-python@v6
         with:
-          python-version: "3.13"
+          python-version-file: "pyproject.toml"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
 
       - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install --requirement requirements.txt
+        run: uv sync --locked --dev
 
       - name: Run ruff format
-        run: |
-          ruff format --check --force-exclude -- src
+        run: uv run ruff format --check --force-exclude -- src
 
       - name: Run ruff lint
-        run: |
-          ruff check --force-exclude -- src
+        run: uv run ruff check --force-exclude -- src
 
       - name: Run mypy typecheck
-        run: |
-          mypy --pretty -- src
+        run: uv run mypy --pretty -- src
