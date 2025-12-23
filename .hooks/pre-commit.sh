@@ -20,11 +20,11 @@ function sh_lint() {
             continue
         fi
 
-        if ! uv run shfmt -d -i 4 -- "$f"; then
+        if ! uv run shfmt --diff --indent 4 -- "$f"; then
             block "[ERROR] shfmt failed for $f"
         fi
 
-        if ! uv run shellcheck -e SC2034 -- "$f"; then
+        if ! uv run shellcheck --external-sources --exclude=SC2034 -- "$f"; then
             block "[ERROR] shellcheck failed for $f"
         fi
     done
