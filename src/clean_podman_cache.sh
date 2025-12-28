@@ -2,7 +2,8 @@
 set -euo pipefail
 
 function clean_podman_cache() {
-    podman system prune --force
+    podman system prune --force --external
+    podman system prune --force --build
 }
 
 function remove_none_images() {
