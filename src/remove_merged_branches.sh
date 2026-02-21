@@ -58,7 +58,7 @@ function remove_merged_branches() {
     echo
 
     log_info "Removing merged branches..."
-    printf '%s\n' "${branches}" | xargs -r git branch -d
+    printf '%s\n' "${branches}" | xargs --no-run-if-empty git branch --delete
 }
 
 # driver code
