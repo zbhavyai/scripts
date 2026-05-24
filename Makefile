@@ -1,11 +1,11 @@
 .PHONY: clean init format lint help
 
-clean:
-	@rm -rf .venv .mypy_cache .ruff_cache
-
 init:
 	@ln -sf $(CURDIR)/.hooks/pre-commit.sh .git/hooks/pre-commit
 	@uv sync
+
+clean:
+	@rm -rf .venv .mypy_cache .ruff_cache
 
 format:
 	@find src -type f -name '*.sh' -print0 | xargs -0 -r uv run shfmt -w -i 4
